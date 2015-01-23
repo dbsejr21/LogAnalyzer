@@ -20,7 +20,9 @@ public class Log {
 	public static List<Log.Url> listUrl = new ArrayList<Log.Url>();
 	public static List<Browser> listBrowser = new ArrayList<Browser>();
 	public static List<String> listTime = new ArrayList<String>();
-	
+
+		
+
 	public class Url {
 
 		public static final String PREFIX_FOR_SERVICE_ID = "http://apis.daum.net/search/";
@@ -34,6 +36,7 @@ public class Log {
 			public String value;
 		}
 	}
+	
 }
 
 
