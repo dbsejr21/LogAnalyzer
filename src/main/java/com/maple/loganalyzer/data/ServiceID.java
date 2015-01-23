@@ -1,5 +1,5 @@
 package com.maple.loganalyzer.data;
 
 public enum ServiceID {
-	blog, book, image, knowledge, news, vclip
+	BLOG, BOOK, IMAGE, KNOWLEDGE, NEW, VCLIP
 }
