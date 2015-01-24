@@ -21,51 +21,54 @@ import com.maple.loganalyzer.data.LogFormat;
  * 
  */
 public class PreProcessor {
-	
+
 	private UrlParser urlParser = new UrlParser();
 
 	private File file;
 	private FileReader fileReader;
 	private BufferedReader bufferedReader;
+	
+	private List<String> listCompenent;
+	
+	private LineParser lineParser;
 
 	public PreProcessor(String fileName) throws IOException {
 		file = new File(fileName);
 		fileReader = new FileReader(file);
 		bufferedReader = new BufferedReader(fileReader);
+		lineParser = new LineParser();
 	}
 
-	public void runPreProcessor() {
+	public void runPreProcessor() throws IOException {
 
-		List<String> listCompenent = new ArrayList<String>();
+		listCompenent = new ArrayList<String>();
+		String line;
 		
-
-		for (LogFormat logFormat : LogFormat.values()) {
-
-			if (logFormat.equals(LogFormat.STATUS_CODE)) {
-
-			} else if (logFormat.equals(LogFormat.URL)) {
-
-			} else if (logFormat.equals(LogFormat.BROWSER)) {
-
-			} else if (logFormat.equals(LogFormat.TIME)) {
-
-			} else {
-				System.out.println("지원되지 않는 로그 포맷입니다.");
-				System.exit(-1);
-			}
+		while ((line = bufferedReader.readLine()) != null) {
+			listCompenent = lineParser.parseLine(line);
+			addCompenentToList();
 		}
 	}
+	
+	private void addCompenentToList() {
+		for (LogFormat logFormat : LogFormat.values()) {
 
-	private List<String> parseLine() throws IOException {
-		List<String> listCompenent;
-		
-		String line;
-		line = bufferedReader.readLine();
-		
-		
-				
-
-		return listCompenent;
+			switch (logFormat) {
+			case STATUS_CODE:
+				Log.listStatusCode.add(listCompenent.get(LogFormat.STATUS_CODE.ordinal()));
+				break;
+			case URL:
+				break;
+			case BROWSER:
+				break;
+			case TIME:
+				break;
+			default:
+				System.out.println("지원되지 않는 로그 포맷입니다.");
+				System.exit(-1);
+				break;
+			}
+		}
 	}
 
 }

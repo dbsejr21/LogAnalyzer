@@ -1,5 +1,7 @@
 package com.maple.loganalyzer.util;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,23 +16,26 @@ public class PatternMatcher {
 	private Pattern pattern;
 	private Matcher matcher;
 
-	private String prefix;
-	private String suffix;
-
 	public PatternMatcher() {
 	}
 
-	public void regTest() {
-		StringBuffer sb = new StringBuffer();
-		pattern = Pattern.compile("[*]");
-		matcher = pattern
-				.matcher("[200][http://apis.daum.net/search/knowledge?apikey=23jf&q=daum][IE][2009-06-10 08:00:00]");
+	public List<String> getMatchedStrings (String rawString, String prefix, String suffix) {
+		
+		List<String> matchedStrings = new ArrayList<String>();
+		String[] arrStr = null;
 
-		while (matcher.find()) {
-			
-			System.out.println(matcher.toString());
+		pattern = Pattern.compile(prefix);
+		arrStr = pattern.split(rawString);
+		
+		pattern = Pattern.compile(suffix);
+		for (String s : arrStr) {
+			matcher = pattern.matcher(s);
+			while (matcher.find()) {
+				int indexOfSuffix = matcher.end();
+				System.out.println(s.substring(0, indexOfSuffix - 1));
+			}
 		}
-
+		return matchedStrings;
 	}
 
 }

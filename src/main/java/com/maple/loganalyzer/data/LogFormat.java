@@ -10,6 +10,7 @@ package com.maple.loganalyzer.data;
  * 
  */
 public enum LogFormat {
-	STATUS_CODE, URL, BROWSER, TIME
+	STATUS_CODE, URL, BROWSER, TIME;
+	
 	
 }
