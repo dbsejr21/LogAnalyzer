@@ -1,5 +1,8 @@
 package com.maple.loganalyzer.analysis;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 /**
  * 
  * @author Deok
@@ -9,6 +12,7 @@ package com.maple.loganalyzer.analysis;
  *
  */
 
+@Service
 public class Analyzer {
 
 }
