@@ -32,7 +32,7 @@ public class PatternMatcher {
 			matcher = pattern.matcher(s);
 			while (matcher.find()) {
 				int indexOfSuffix = matcher.end();
-				System.out.println(s.substring(0, indexOfSuffix - 1));
+				matchedStrings.add(s.substring(0, indexOfSuffix - 1));
 			}
 		}
 		return matchedStrings;
