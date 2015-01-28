@@ -1,5 +1,12 @@
 package com.maple.loganalyzer.preprocessor;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.maple.loganalyzer.data.Log;
+import com.maple.loganalyzer.data.Log.Url;
+import com.maple.loganalyzer.util.PatternMatcher;
+
 /**
  * 
  * @author Deok
@@ -9,5 +16,20 @@ package com.maple.loganalyzer.preprocessor;
  * 
  */
 public class UrlParser {
-
+private PatternMatcher patternMatcher;
+	
+	public UrlParser() {
+		patternMatcher = new PatternMatcher();
+	}
+	
+	public Url parseUrl(String strUrl) {
+		
+		Log.Url url = new Log.Url();
+		String serviceId = patternMatcher.getMatchedStrings(strUrl, Log.Url.PREFIX_FOR_SERVICE_ID, Log.Url.SUFFIX_FOR_SERVICE_ID).get(0);
+		
+		
+		
+		
+		return null;
+	}
 }

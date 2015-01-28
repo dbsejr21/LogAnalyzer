@@ -13,6 +13,9 @@ import com.maple.loganalyzer.data.Log;
 public class PatternMatcherTest {
 	
 	PatternMatcher patternMatcher;
+	
+	private Pattern pattern;
+	private Matcher matcher;
 
 	@Before
 	public void setup() {
@@ -52,19 +55,15 @@ public class PatternMatcherTest {
 		System.out.println("\n");
 	}
 	
-//	@Test
-//	public void getMatchedStringsTest_URL파싱하여_파라미터_분리한다() {
-//		
-//		String url = "http://apis.daum.net/search/knowledge?apikey=23jf&q=daum";
-//		
-//		List<String> matchedStrings = new ArrayList<String>();
-//		
-//		matchedStrings = patternMatcher.getMatchedStrings(url, Log.Url., Log.Url.SUFFIX_FOR_SERVICE_ID);
-//		
-//		for (String s: matchedStrings) {
-//			System.out.println(s);
-//		}
-//		System.out.println("\n");
-//	}
-	
+	@Test
+	public void getMatchedStringsTest_URL파싱하여_파라미터_분리한다() {
+		
+		String url = "http://apis.daum.net/search/knowledge?apikey=23jf&q=daum&test=zz";
+		
+//		pattern = Pattern.compile("\\?");
+//		pattern.split(url);
+//		System.out.println(url);
+		
+		
+	}
 }

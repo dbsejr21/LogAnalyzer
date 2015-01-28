@@ -58,10 +58,13 @@ public class PreProcessor {
 				Log.listStatusCode.add(listCompenent.get(LogFormat.STATUS_CODE.ordinal()));
 				break;
 			case URL:
+				
 				break;
 			case BROWSER:
+				Log.listBrowser.add(listCompenent.get(LogFormat.BROWSER.ordinal()));
 				break;
 			case TIME:
+				Log.listTime.add(listCompenent.get(LogFormat.TIME.ordinal()));
 				break;
 			default:
 				System.out.println("지원되지 않는 로그 포맷입니다.");
