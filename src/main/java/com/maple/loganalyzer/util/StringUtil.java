@@ -12,14 +12,14 @@ import java.util.regex.Pattern;
  * @Description prefix와 suffix 사이의 패턴에 일치하는 항목을 추출
  *
  */
-public class PatternMatcher {
+public class StringUtil {
 	private Pattern pattern;
 	private Matcher matcher;
 
-	public PatternMatcher() {
+	public StringUtil() {
 	}
 
-	public List<String> getMatchedStrings (String rawString, String prefix, String suffix) {
+	public List<String> pickStringList (String rawString, String prefix, String suffix) {
 		
 		List<String> matchedStrings = new ArrayList<String>();
 		String[] arrStr = null;
@@ -28,6 +28,7 @@ public class PatternMatcher {
 		arrStr = pattern.split(rawString);
 		
 		pattern = Pattern.compile(suffix);
+		
 		for (String s : arrStr) {
 			matcher = pattern.matcher(s);
 			while (matcher.find()) {
@@ -37,4 +38,15 @@ public class PatternMatcher {
 		}
 		return matchedStrings;
 	}
+	
+	public String[] splitter(String rawString, String regex) {
+		return rawString.split(regex);
+	}
+	
+	
+//	public String pickString(String rawString, String prefix, String suffix) {
+//		
+//		return rawString.substring(rawString.indexOf(prefix), rawString.indexOf(suffix));
+//		
+//	}
 }

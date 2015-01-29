@@ -9,10 +9,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.maple.loganalyzer.data.Log;
+import com.maple.loganalyzer.data.Log.Url.Parameter;
+import com.maple.loganalyzer.preprocessor.UrlParser;
 
-public class PatternMatcherTest {
+public class StringUtilTest {
 	
-	PatternMatcher patternMatcher;
+	StringUtil stringUtil;
 	
 	private Pattern pattern;
 	private Matcher matcher;
@@ -20,7 +22,7 @@ public class PatternMatcherTest {
 	@Before
 	public void setup() {
 		// TODO Auto-generated method stub
-		patternMatcher = new PatternMatcher();
+		stringUtil = new StringUtil();
 	}
 
 
@@ -31,7 +33,7 @@ public class PatternMatcherTest {
 		
 		List<String> matchedStrings = new ArrayList<String>();
 		
-		matchedStrings = patternMatcher.getMatchedStrings(line, Log.PREFIX_FOR_COMPENENT, Log.SUFFIX_FOR_COMPENENT);
+		matchedStrings = stringUtil.pickStringList(line, Log.PREFIX_FOR_COMPENENT, Log.SUFFIX_FOR_COMPENENT);
 		
 		for (String s: matchedStrings) {
 			System.out.println(s);
@@ -47,23 +49,40 @@ public class PatternMatcherTest {
 		
 		List<String> matchedStrings = new ArrayList<String>();
 		
-		matchedStrings = patternMatcher.getMatchedStrings(url, Log.Url.PREFIX_FOR_SERVICE_ID, Log.Url.SUFFIX_FOR_SERVICE_ID);
+		matchedStrings = stringUtil.pickStringList(url, Log.Url.PREFIX_FOR_SERVICE_ID, Log.Url.SUFFIX_FOR_SERVICE_ID);
 		
 		for (String s: matchedStrings) {
 			System.out.println(s);
 		}
 		System.out.println("\n");
+		
 	}
 	
 	@Test
-	public void getMatchedStringsTest_URL파싱하여_파라미터_분리한다() {
+	public void getMatchedStringsTest_URL파싱하여_ServiceID와_파라미터_분리한다() {
 		
-		String url = "http://apis.daum.net/search/knowledge?apikey=23jf&q=daum&test=zz";
 		
-//		pattern = Pattern.compile("\\?");
-//		pattern.split(url);
-//		System.out.println(url);
+		UrlParser urlParser = new UrlParser();
 		
+		String strUrl = "http://apis.daum.net/search/knowledge?apikey=23jf&q=daum&test=zz";
+		
+		Log.Url url = new Log.Url();
+		
+		
+		url = urlParser.parseUrl(strUrl);
+		
+		System.out.println(url.serviceID);
+		
+		for (Log.Url.Parameter p: url.parameters) {
+			System.out.println(p.name + " " + p.value);
+		}
 		
 	}
+	
+	
+	private String[] splitter(String string, String regex) {
+		return string.split(regex);
+	}
+	
+	
 }

@@ -22,46 +22,51 @@ import com.maple.loganalyzer.data.LogFormat;
  */
 public class PreProcessor {
 
-	private UrlParser urlParser = new UrlParser();
+	int a = 0;
 
 	private File file;
 	private FileReader fileReader;
 	private BufferedReader bufferedReader;
-	
+
 	private List<String> listCompenent;
-	
-	private LineParser lineParser;
+	private CompenentParser compenentParser;
+	private UrlParser urlParser;
 
 	public PreProcessor(String fileName) throws IOException {
+
 		file = new File(fileName);
 		fileReader = new FileReader(file);
 		bufferedReader = new BufferedReader(fileReader);
-		lineParser = new LineParser();
+		compenentParser = new CompenentParser();
+		urlParser = new UrlParser();
+
 	}
 
 	public void runPreProcessor() throws IOException {
 
 		listCompenent = new ArrayList<String>();
 		String line;
-		
+
 		while ((line = bufferedReader.readLine()) != null) {
-			listCompenent = lineParser.parseLine(line);
+			listCompenent = compenentParser.parseCompenent(line);
 			addCompenentToList();
 		}
 	}
-	
+
 	private void addCompenentToList() {
 		for (LogFormat logFormat : LogFormat.values()) {
 
 			switch (logFormat) {
 			case STATUS_CODE:
-				Log.listStatusCode.add(listCompenent.get(LogFormat.STATUS_CODE.ordinal()));
+				Log.listStatusCode.add(listCompenent.get(LogFormat.STATUS_CODE
+						.ordinal()));
 				break;
 			case URL:
-				
+				Log.listUrl.add(urlParser.parseUrl(listCompenent.get(LogFormat.URL.ordinal())));
 				break;
 			case BROWSER:
-				Log.listBrowser.add(listCompenent.get(LogFormat.BROWSER.ordinal()));
+				Log.listBrowser.add(listCompenent.get(LogFormat.BROWSER
+						.ordinal()));
 				break;
 			case TIME:
 				Log.listTime.add(listCompenent.get(LogFormat.TIME.ordinal()));
