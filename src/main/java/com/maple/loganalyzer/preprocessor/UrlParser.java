@@ -3,8 +3,8 @@ package com.maple.loganalyzer.preprocessor;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.maple.loganalyzer.data.Log;
-import com.maple.loganalyzer.data.Log.Url;
+import com.maple.loganalyzer.data.InputLog;
+import com.maple.loganalyzer.data.InputLog.Url;
 import com.maple.loganalyzer.util.StringUtil;
 
 /**
@@ -17,11 +17,11 @@ import com.maple.loganalyzer.util.StringUtil;
 public class UrlParser {
 	
 	private StringUtil stringUtil;
-	private Log.Url url;
+	private InputLog.Url url;
 
 	public UrlParser() {
 		stringUtil = new StringUtil();
-		url = new Log.Url();
+		url = new InputLog.Url();
 	}
 
 	public Url parseUrl(String strUrl) {
@@ -39,7 +39,7 @@ public class UrlParser {
 		List<String> matchedStrings = new ArrayList<String>();
 		
 		matchedStrings = stringUtil.pickStringList(strUrl,
-				Log.Url.PREFIX_FOR_SERVICE_ID, Log.Url.SUFFIX_FOR_SERVICE_ID);
+				InputLog.Url.PREFIX_FOR_SERVICE_ID, InputLog.Url.SUFFIX_FOR_SERVICE_ID);
 		
 		if (matchedStrings.size() == 0) {
 			return null;
@@ -51,17 +51,17 @@ public class UrlParser {
 
 	}
 
-	public List<Log.Url.Parameter> getParameters(String strUrl) {
+	public List<InputLog.Url.Parameter> getParameters(String strUrl) {
 		String parameterSpace = strUrl.substring(strUrl.indexOf("?") + 1);
 
 		String[] parameters = stringUtil.splitter(parameterSpace, "&");
 
-		List<Log.Url.Parameter> parameterList = new ArrayList<Log.Url.Parameter>();
+		List<InputLog.Url.Parameter> parameterList = new ArrayList<InputLog.Url.Parameter>();
 
 		for (String param : parameters) {
 
 			String[] paramContent = stringUtil.splitter(param, "=");
-			Log.Url.Parameter paramter = new Log.Url.Parameter(paramContent[0],
+			InputLog.Url.Parameter paramter = new InputLog.Url.Parameter(paramContent[0],
 					paramContent[1]);
 			parameterList.add(paramter);
 			

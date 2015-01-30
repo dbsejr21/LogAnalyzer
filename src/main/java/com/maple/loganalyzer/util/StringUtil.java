@@ -16,19 +16,16 @@ public class StringUtil {
 	private Pattern pattern;
 	private Matcher matcher;
 
-	public StringUtil() {
-	}
+	public List<String> pickStringList(String rawString, String prefix, String suffix) {
 
-	public List<String> pickStringList (String rawString, String prefix, String suffix) {
-		
 		List<String> matchedStrings = new ArrayList<String>();
 		String[] arrStr = null;
 
 		pattern = Pattern.compile(prefix);
 		arrStr = pattern.split(rawString);
-		
+
 		pattern = Pattern.compile(suffix);
-		
+
 		for (String s : arrStr) {
 			matcher = pattern.matcher(s);
 			while (matcher.find()) {
@@ -38,15 +35,9 @@ public class StringUtil {
 		}
 		return matchedStrings;
 	}
-	
+
 	public String[] splitter(String rawString, String regex) {
 		return rawString.split(regex);
 	}
-	
-	
-//	public String pickString(String rawString, String prefix, String suffix) {
-//		
-//		return rawString.substring(rawString.indexOf(prefix), rawString.indexOf(suffix));
-//		
-//	}
+
 }

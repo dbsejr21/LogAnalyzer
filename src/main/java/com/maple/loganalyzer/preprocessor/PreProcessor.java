@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.maple.loganalyzer.data.Log;
-import com.maple.loganalyzer.data.LogFormat;
+import com.maple.loganalyzer.data.InputLog;
+import com.maple.loganalyzer.data.InputLogFormat;
 
 /**
  * 
@@ -21,8 +21,6 @@ import com.maple.loganalyzer.data.LogFormat;
  * 
  */
 public class PreProcessor {
-
-	int a = 0;
 
 	private File file;
 	private FileReader fileReader;
@@ -54,27 +52,27 @@ public class PreProcessor {
 	}
 
 	private void addCompenentToList() {
-		for (LogFormat logFormat : LogFormat.values()) {
+		
+		for (InputLogFormat logFormat : InputLogFormat.values()) {
 
 			switch (logFormat) {
 			case STATUS_CODE:
-				Log.listStatusCode.add(listCompenent.get(LogFormat.STATUS_CODE
-						.ordinal()));
+				InputLog.listStatusCode.add(listCompenent.get(InputLogFormat.STATUS_CODE.ordinal()));
 				break;
 			case URL:
-				Log.listUrl.add(urlParser.parseUrl(listCompenent.get(LogFormat.URL.ordinal())));
+				InputLog.listUrl.add(urlParser.parseUrl(listCompenent.get(InputLogFormat.URL.ordinal())));
 				break;
 			case BROWSER:
-				Log.listBrowser.add(listCompenent.get(LogFormat.BROWSER
-						.ordinal()));
+				InputLog.listBrowser.add(listCompenent.get(InputLogFormat.BROWSER.ordinal()));
 				break;
 			case TIME:
-				Log.listTime.add(listCompenent.get(LogFormat.TIME.ordinal()));
+				InputLog.listTime.add(listCompenent.get(InputLogFormat.TIME.ordinal()));
 				break;
 			default:
 				System.out.println("지원되지 않는 로그 포맷입니다.");
 				System.exit(-1);
 				break;
+				
 			}
 		}
 	}

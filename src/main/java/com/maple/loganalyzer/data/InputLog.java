@@ -11,7 +11,7 @@ import java.util.List;
  * 로그 데이터 모델링
  *
  */
-public class Log {
+public class InputLog {
 	
 	public static final String PREFIX_FOR_COMPENENT = "\\[";
 	public static final String SUFFIX_FOR_COMPENENT = "\\]";
