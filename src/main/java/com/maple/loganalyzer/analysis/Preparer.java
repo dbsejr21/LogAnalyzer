@@ -8,6 +8,14 @@ import com.maple.loganalyzer.data.Parameter;
 import com.maple.loganalyzer.data.Stat;
 import com.maple.loganalyzer.data.Url;
 
+
+/**
+ * 
+ * @author Deok
+ * 
+ * @Behavior InputLog의 각 리스트를 입력으로 하고, apikey, 상태코드, serviceID, 시간대, 브라우저를 카운팅하여 해시맵에 저장 
+ */
+
 public class Preparer {
 	
 	public void prepare() {

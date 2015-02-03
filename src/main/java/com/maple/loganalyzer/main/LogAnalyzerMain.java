@@ -12,7 +12,6 @@ import com.maple.loganalyzer.logparser.LogParser;
 public class LogAnalyzerMain {
 	public static void main(String[] args) throws IOException {
 		
-		
 		LogParser preProcessor = new LogParser("input.log");
 		preProcessor.runPreProcessor();
 
@@ -21,7 +20,6 @@ public class LogAnalyzerMain {
 		
 		Analyzer analyzer = new Analyzer();
 		analyzer.analyze();
-
 
 		String mostCalledApikey = OutputLog.mostCalledApikey;
 		System.out.println(mostCalledApikey);

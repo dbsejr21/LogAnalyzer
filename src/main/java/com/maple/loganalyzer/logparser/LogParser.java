@@ -14,9 +14,9 @@ import com.maple.loganalyzer.data.InputLogFormat;
  * 
  * @author Deok
  * 
- * @Input Input - input.log
+ * @Input input.log 파일
  * 
- * @Behavior - 통계를 내기전에 수행되는 전처리 작업 - input.log의 컴포넌트들을 추출하여 Log클래스의 각 컴포넌트용
+ * @Behavior - 통계를 내기전에 수행되는 전처리 작업 - input.log의 컴포넌트들을 추출하여 InputLog클래스의 각 컴포넌트용
  *           리스트에 저장
  * 
  */

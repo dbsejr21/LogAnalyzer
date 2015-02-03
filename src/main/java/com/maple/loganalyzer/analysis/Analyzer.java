@@ -19,7 +19,7 @@ import com.maple.loganalyzer.util.SortUtil;
  * 
  * @author Deok
  * 
- * @Description InputLog 클래스의 리스트들을 통계하여 OutputLog 클래스에 통계 데이터 저장
+ * @Behavior Stat 클래스의 해시맵에 카운팅된 데이터를 입력으로 하고, OutputLog 클래스에 최다 호출 apikey 등 최종 통계값을 저장
  * 
  *
  */
