@@ -72,9 +72,15 @@ public class Analyzer {
 
 	private List<String> getTopThreeServiceId() {
 		List<String> topThreeServiceId = new ArrayList<String>();
+		Map<String, Integer> sortedMap = new LinkedHashMap<String, Integer>();
 
-		topThreeServiceId.addAll(sortUtil
-				.sortMapByValue(Stat.counterForServiceId));
+		sortedMap.putAll(sortUtil.sortMapByValue(Stat.counterForServiceId));
+		
+		Set<String> keySet = sortedMap.keySet();
+		
+		for(String key: keySet) {
+			topThreeServiceId.add(key + " : " + sortedMap.get(key));
+		}
 
 		for (int index = 0; index < topThreeServiceId.size(); index++) {
 
@@ -104,7 +110,7 @@ public class Analyzer {
 		List<String> useRatioBrower = new ArrayList<String>();
 		Map<String, Integer> sortedMap = new LinkedHashMap<String, Integer>();
 
-		sortedMap.putAll(sortUtil.sortMapByValue2(Stat.counterForBrowser));
+		sortedMap.putAll(sortUtil.sortMapByValue(Stat.counterForBrowser));
 		
 		Set<String> keySet = sortedMap.keySet();
 		

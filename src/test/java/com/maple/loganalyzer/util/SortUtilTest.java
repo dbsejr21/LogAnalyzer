@@ -19,26 +19,5 @@ public class SortUtilTest {
 		sortUtil = new SortUtil();
 	}
 	
-	@Test
-	public void sortMapToValueTest() {
-		
-		map.put("blog", 826);
-		map.put("book", 790);
-		map.put("image", 795);
-		map.put("knowledge", 836);
-		
-		
-//		sortUtil.sortMapByValue(map);
-		
-		List<String> sortedList = new ArrayList<String>();
-
-		sortedList.addAll(sortUtil.sortMapByValue(map));
-
-		System.out.println("\nresult");
-		for (String s : sortedList) {
-			System.out.println(s);
-		}
-
-	}
 
 }

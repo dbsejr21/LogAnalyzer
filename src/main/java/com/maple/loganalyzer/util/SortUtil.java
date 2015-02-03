@@ -11,21 +11,7 @@ import java.util.TreeMap;
 
 public class SortUtil {
 
-	public List<String> sortMapByValue(Map<String, Integer> map) {
-
-		List<String> sortedList = new ArrayList<String>();
-		Map<String, Integer> sortedMap = new TreeMap<String, Integer>();
-
-		for (Iterator i = sortKeyByValue(map).iterator(); i.hasNext();) {
-			String key = (String) i.next();
-			sortedList.add(key + " : " + map.get(key));
-		}
-
-		return sortedList;
-
-	}
-	
-	public Map<String, Integer> sortMapByValue2(Map<String, Integer> map) {
+	public Map<String, Integer> sortMapByValue(Map<String, Integer> map) {
 
 		List<String> sortedList = new ArrayList<String>();
 		Map<String, Integer> sortedMap = new LinkedHashMap<String, Integer>();
@@ -34,12 +20,16 @@ public class SortUtil {
 			String key = (String) i.next();
 			sortedMap.put(key, map.get(key));
 		}
-
 		return sortedMap;
-
 	}
 	
-
+	/**
+	 * 
+	 * @param map
+	 * @return listKey
+	 * @Description
+	 * 출처: http://www.xinotes.net/notes/note/306/
+	 */
 	public List sortKeyByValue(final Map map) {
 		List listKey = new ArrayList();
 		listKey.addAll(map.keySet());
