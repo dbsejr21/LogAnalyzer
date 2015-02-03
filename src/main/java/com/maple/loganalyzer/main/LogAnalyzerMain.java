@@ -9,7 +9,7 @@ import com.maple.loganalyzer.printer.TextPrinter;
 public class LogAnalyzerMain {
 	public static void main(String[] args) throws IOException {
 		
-		Preparer preparer = new Preparer();
+		Preparer preparer = new Preparer("input.log");
 		preparer.prepare();
 		
 		Analyzer analyzer = new Analyzer();

@@ -22,8 +22,8 @@ public class Preparer {
 
 	private LogParser logParser;
 
-	public Preparer() throws IOException {
-		logParser = new LogParser("input.log");
+	public Preparer(String fileName) throws IOException {
+		logParser = new LogParser(fileName);
 	}
 
 	public void prepare() throws IOException {
