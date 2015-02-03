@@ -1,14 +1,10 @@
 package com.maple.loganalyzer.data;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Stat {
 	
-	// 전체 라인 수
-	public static final int COUNTER_FOR_LINE = 0;
-
 	// 최다 호출 APIKEY을 구해야 함
 	// APIKEY 별 누적 카운트
 	public static Map<String, Integer> counterForApiKey = new HashMap<String, Integer>();

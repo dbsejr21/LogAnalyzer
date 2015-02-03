@@ -2,7 +2,6 @@ package com.maple.loganalyzer.util;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -27,11 +26,11 @@ public class StringUtil {
 
 		pattern = Pattern.compile(suffix);
 
-		for (String s : arrStr) {
-			matcher = pattern.matcher(s);
+		for (String string : arrStr) {
+			matcher = pattern.matcher(string);
 			while (matcher.find()) {
 				int indexOfSuffix = matcher.end();
-				matchedStrings.add(s.substring(0, indexOfSuffix - 1));
+				matchedStrings.add(string.substring(0, indexOfSuffix - 1));
 			}
 		}
 		return matchedStrings;
