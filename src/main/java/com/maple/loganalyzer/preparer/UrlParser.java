@@ -3,7 +3,6 @@ package com.maple.loganalyzer.preparer;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.maple.loganalyzer.data.InputLog;
 import com.maple.loganalyzer.data.Url;
 import com.maple.loganalyzer.data.Parameter;
 import com.maple.loganalyzer.util.StringUtil;

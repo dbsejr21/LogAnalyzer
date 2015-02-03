@@ -1,5 +1,6 @@
 package com.maple.loganalyzer.preparer;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -8,19 +9,39 @@ import com.maple.loganalyzer.data.Parameter;
 import com.maple.loganalyzer.data.Stat;
 import com.maple.loganalyzer.data.Url;
 
-
 /**
  * 
  * @author Deok
  * 
- * @Behavior InputLog의 각 리스트를 입력으로 하고, apikey, 상태코드, serviceID, 시간대, 브라우저를 카운팅하여 해시맵에 저장
- *    
+ * @Behavior InputLog의 각 리스트를 입력으로 하고, apikey, 상태코드, serviceID, 시간대, 브라우저를 카운팅하여
+ *           해시맵에 저장
+ * 
  */
 
 public class Preparer {
-	
-	public void prepare() {
 
+	private LogParser logParser;
+
+	public Preparer() throws IOException {
+		logParser = new LogParser("input.log");
+	}
+
+	public void prepare() throws IOException {
+		
+		while (logParser.runLogParser() != false) {
+			countAll();
+			clearAllList();
+		}
+	}
+	
+	private void clearAllList() {
+		InputLog.listBrowser.clear();
+		InputLog.listStatusCode.clear();
+		InputLog.listTime.clear();
+		InputLog.listUrl.clear();
+	}
+
+	private void countAll() {
 		for (Url url : InputLog.listUrl) {
 			countServiceId(url.serviceId);
 			countApiKey(url.parameters);
@@ -39,9 +60,8 @@ public class Preparer {
 			String keyTime = time.substring(0, 16);
 			countTime(keyTime);
 		}
-
 	}
-	
+
 	private void count(Map<String, Integer> map, String key) {
 		if (map.containsKey(key)) {
 			int count = map.get(key) + 1;
