@@ -3,6 +3,8 @@ package com.maple.loganalyzer.preprocessor;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.maple.loganalyzer.logparser.UrlParser;
+
 public class UrlParserTest {
 	
 	UrlParser urlParser;

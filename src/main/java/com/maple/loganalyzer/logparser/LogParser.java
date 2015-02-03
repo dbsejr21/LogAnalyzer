@@ -1,4 +1,4 @@
-package com.maple.loganalyzer.preprocessor;
+package com.maple.loganalyzer.logparser;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -7,22 +7,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.maple.loganalyzer.data.Log;
-import com.maple.loganalyzer.data.LogFormat;
+import com.maple.loganalyzer.data.InputLog;
+import com.maple.loganalyzer.data.InputLogFormat;
 
 /**
  * 
  * @author Deok
  * 
- * @Input Input - input.log
+ * @Input input.log 파일
  * 
- * @Behavior - 통계를 내기전에 수행되는 전처리 작업 - input.log의 컴포넌트들을 추출하여 Log클래스의 각 컴포넌트용
+ * @Behavior - 통계를 내기전에 수행되는 전처리 작업 - input.log의 컴포넌트들을 추출하여 InputLog클래스의 각 컴포넌트용
  *           리스트에 저장
  * 
  */
-public class PreProcessor {
-
-	int a = 0;
+public class LogParser {
 
 	private File file;
 	private FileReader fileReader;
@@ -32,7 +30,7 @@ public class PreProcessor {
 	private CompenentParser compenentParser;
 	private UrlParser urlParser;
 
-	public PreProcessor(String fileName) throws IOException {
+	public LogParser(String fileName) throws IOException {
 
 		file = new File(fileName);
 		fileReader = new FileReader(file);
@@ -54,22 +52,21 @@ public class PreProcessor {
 	}
 
 	private void addCompenentToList() {
-		for (LogFormat logFormat : LogFormat.values()) {
+		
+		for (InputLogFormat logFormat : InputLogFormat.values()) {
 
 			switch (logFormat) {
 			case STATUS_CODE:
-				Log.listStatusCode.add(listCompenent.get(LogFormat.STATUS_CODE
-						.ordinal()));
+				InputLog.listStatusCode.add(listCompenent.get(InputLogFormat.STATUS_CODE.ordinal()));
 				break;
 			case URL:
-				Log.listUrl.add(urlParser.parseUrl(listCompenent.get(LogFormat.URL.ordinal())));
+				InputLog.listUrl.add(urlParser.parseUrl(listCompenent.get(InputLogFormat.URL.ordinal())));
 				break;
 			case BROWSER:
-				Log.listBrowser.add(listCompenent.get(LogFormat.BROWSER
-						.ordinal()));
+				InputLog.listBrowser.add(listCompenent.get(InputLogFormat.BROWSER.ordinal()));
 				break;
 			case TIME:
-				Log.listTime.add(listCompenent.get(LogFormat.TIME.ordinal()));
+				InputLog.listTime.add(listCompenent.get(InputLogFormat.TIME.ordinal()));
 				break;
 			default:
 				System.out.println("지원되지 않는 로그 포맷입니다.");

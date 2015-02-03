@@ -8,9 +8,9 @@ import java.util.regex.Pattern;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.maple.loganalyzer.data.Log;
-import com.maple.loganalyzer.data.Log.Url.Parameter;
-import com.maple.loganalyzer.preprocessor.UrlParser;
+import com.maple.loganalyzer.data.InputLog;
+import com.maple.loganalyzer.data.Url;
+import com.maple.loganalyzer.logparser.UrlParser;
 
 public class StringUtilTest {
 	
@@ -33,7 +33,7 @@ public class StringUtilTest {
 		
 		List<String> matchedStrings = new ArrayList<String>();
 		
-		matchedStrings = stringUtil.pickStringList(line, Log.PREFIX_FOR_COMPENENT, Log.SUFFIX_FOR_COMPENENT);
+		matchedStrings = stringUtil.pickStringList(line, InputLog.PREFIX_FOR_COMPENENT, InputLog.SUFFIX_FOR_COMPENENT);
 		
 		for (String s: matchedStrings) {
 			System.out.println(s);
@@ -49,7 +49,7 @@ public class StringUtilTest {
 		
 		List<String> matchedStrings = new ArrayList<String>();
 		
-		matchedStrings = stringUtil.pickStringList(url, Log.Url.PREFIX_FOR_SERVICE_ID, Log.Url.SUFFIX_FOR_SERVICE_ID);
+		matchedStrings = stringUtil.pickStringList(url, Url.PREFIX_FOR_SERVICE_ID, Url.SUFFIX_FOR_SERVICE_ID);
 		
 		for (String s: matchedStrings) {
 			System.out.println(s);
@@ -66,16 +66,16 @@ public class StringUtilTest {
 		
 		String strUrl = "http://apis.daum.net/search/knowledge?apikey=23jf&q=daum&test=zz";
 		
-		Log.Url url = new Log.Url();
+		Url url = new Url();
 		
 		
 		url = urlParser.parseUrl(strUrl);
 		
-		System.out.println(url.serviceID);
+		System.out.println(url.serviceId);
 		
-		for (Log.Url.Parameter p: url.parameters) {
-			System.out.println(p.name + " " + p.value);
-		}
+//		for (InputLog.Url.Parameter p: url.parameters) {
+//			System.out.println(p.name + " " + p.value);
+//		}
 		
 	}
 	
