@@ -11,7 +11,7 @@ import java.io.IOException;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.maple.loganalyzer.logparser.LogParser;
+import com.maple.loganalyzer.preparer.LogParser;
 
 public class PreProcessorTest {
 	

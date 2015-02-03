@@ -23,9 +23,6 @@ public class InputLog {
 	public static List<String> listBrowser = new ArrayList<String>();
 	public static List<String> listTime = new ArrayList<String>();
 
-
-	
-	
 }
 
 

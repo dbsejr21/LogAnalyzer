@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import com.maple.loganalyzer.data.InputLog;
 import com.maple.loganalyzer.data.Url;
-import com.maple.loganalyzer.logparser.UrlParser;
+import com.maple.loganalyzer.preparer.UrlParser;
 
 public class StringUtilTest {
 	

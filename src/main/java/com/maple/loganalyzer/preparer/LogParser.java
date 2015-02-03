@@ -1,4 +1,4 @@
-package com.maple.loganalyzer.logparser;
+package com.maple.loganalyzer.preparer;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -40,7 +40,7 @@ public class LogParser {
 
 	}
 
-	public void runPreProcessor() throws IOException {
+	public void runLogParser() throws IOException {
 
 		listCompenent = new ArrayList<String>();
 		String line;

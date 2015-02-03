@@ -1,19 +1,17 @@
 package com.maple.loganalyzer.main;
 
 import java.io.IOException;
-import java.util.Set;
 
 import com.maple.loganalyzer.analysis.Analyzer;
-import com.maple.loganalyzer.analysis.Preparer;
 import com.maple.loganalyzer.data.OutputLog;
-import com.maple.loganalyzer.data.Stat;
-import com.maple.loganalyzer.logparser.LogParser;
+import com.maple.loganalyzer.preparer.LogParser;
+import com.maple.loganalyzer.preparer.Preparer;
 
 public class LogAnalyzerMain {
 	public static void main(String[] args) throws IOException {
 		
-		LogParser preProcessor = new LogParser("input.log");
-		preProcessor.runPreProcessor();
+		LogParser logParser = new LogParser("input.log");
+		logParser.runLogParser();
 
 		Preparer preparer = new Preparer();
 		preparer.prepare();
