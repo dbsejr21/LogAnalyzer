@@ -1,4 +1,4 @@
-package com.maple.loganalyzer.preprocessor;
+package com.maple.loganalyzer.logparser;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -20,7 +20,7 @@ import com.maple.loganalyzer.data.InputLogFormat;
  *           리스트에 저장
  * 
  */
-public class PreProcessor {
+public class LogParser {
 
 	private File file;
 	private FileReader fileReader;
@@ -30,7 +30,7 @@ public class PreProcessor {
 	private CompenentParser compenentParser;
 	private UrlParser urlParser;
 
-	public PreProcessor(String fileName) throws IOException {
+	public LogParser(String fileName) throws IOException {
 
 		file = new File(fileName);
 		fileReader = new FileReader(file);
@@ -72,7 +72,6 @@ public class PreProcessor {
 				System.out.println("지원되지 않는 로그 포맷입니다.");
 				System.exit(-1);
 				break;
-				
 			}
 		}
 	}

@@ -11,13 +11,15 @@ import java.io.IOException;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.maple.loganalyzer.logparser.LogParser;
+
 public class PreProcessorTest {
 	
-	PreProcessor preProcessor;
+	LogParser preProcessor;
 	
 	@Before
 	public void setup() throws IOException {
-		preProcessor = new PreProcessor("input.log");
+		preProcessor = new LogParser("input.log");
 
 	}
 	

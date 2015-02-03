@@ -2,6 +2,7 @@ package com.maple.loganalyzer.util;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -37,7 +38,9 @@ public class StringUtil {
 	}
 
 	public String[] splitter(String rawString, String regex) {
+		
 		return rawString.split(regex);
+		
 	}
 
 }

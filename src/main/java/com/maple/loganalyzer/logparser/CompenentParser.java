@@ -1,4 +1,4 @@
-package com.maple.loganalyzer.preprocessor;
+package com.maple.loganalyzer.logparser;
 
 import java.util.ArrayList;
 import java.util.List;

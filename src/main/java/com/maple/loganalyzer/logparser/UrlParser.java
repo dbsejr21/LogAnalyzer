@@ -1,10 +1,11 @@
-package com.maple.loganalyzer.preprocessor;
+package com.maple.loganalyzer.logparser;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.maple.loganalyzer.data.InputLog;
-import com.maple.loganalyzer.data.InputLog.Url;
+import com.maple.loganalyzer.data.Url;
+import com.maple.loganalyzer.data.Parameter;
 import com.maple.loganalyzer.util.StringUtil;
 
 /**
@@ -17,18 +18,17 @@ import com.maple.loganalyzer.util.StringUtil;
 public class UrlParser {
 	
 	private StringUtil stringUtil;
-	private InputLog.Url url;
+	private Url url;
 
 	public UrlParser() {
 		stringUtil = new StringUtil();
-		url = new InputLog.Url();
 	}
 
 	public Url parseUrl(String strUrl) {
+		url = new Url();
+		url.serviceId = getServiceId(strUrl);
+		url.parameters.addAll(getParameters(strUrl));
 		
-		url.serviceID = getServiceId(strUrl);
-		url.parameters = getParameters(strUrl);
-
 		return url;
 	}
 
@@ -39,29 +39,29 @@ public class UrlParser {
 		List<String> matchedStrings = new ArrayList<String>();
 		
 		matchedStrings = stringUtil.pickStringList(strUrl,
-				InputLog.Url.PREFIX_FOR_SERVICE_ID, InputLog.Url.SUFFIX_FOR_SERVICE_ID);
+				Url.PREFIX_FOR_SERVICE_ID, Url.SUFFIX_FOR_SERVICE_ID);
 		
 		if (matchedStrings.size() == 0) {
-			return null;
+			return "unrecognized";
+		} else {
+			serviceId = matchedStrings.get(0);
 		}
-		
-		serviceId = matchedStrings.get(0);
 		
 		return serviceId;
 
 	}
 
-	public List<InputLog.Url.Parameter> getParameters(String strUrl) {
+	public List<Parameter> getParameters(String strUrl) {
 		String parameterSpace = strUrl.substring(strUrl.indexOf("?") + 1);
 
 		String[] parameters = stringUtil.splitter(parameterSpace, "&");
 
-		List<InputLog.Url.Parameter> parameterList = new ArrayList<InputLog.Url.Parameter>();
+		List<Parameter> parameterList = new ArrayList<Parameter>();
 
 		for (String param : parameters) {
 
 			String[] paramContent = stringUtil.splitter(param, "=");
-			InputLog.Url.Parameter paramter = new InputLog.Url.Parameter(paramContent[0],
+			Parameter paramter = new Parameter(paramContent[0],
 					paramContent[1]);
 			parameterList.add(paramter);
 			

@@ -8,10 +8,12 @@ import java.util.List;
  * @author Deok
  * 
  * @Description
- * 로그 데이터 모델링
+ * 입력 로그 데이터 저장
  *
  */
 public class InputLog {
+	
+	public static int totalLineNumber = 0;
 	
 	public static final String PREFIX_FOR_COMPENENT = "\\[";
 	public static final String SUFFIX_FOR_COMPENENT = "\\]";
@@ -22,30 +24,8 @@ public class InputLog {
 	public static List<String> listTime = new ArrayList<String>();
 
 
-	public static class Url {
-
-		public static final String PREFIX_FOR_SERVICE_ID = "http\\:\\/\\/apis\\.daum\\.net\\/search\\/";
-		public static final String SUFFIX_FOR_SERVICE_ID = "\\?";
-		
-		public String serviceID;
-		public List<Parameter> parameters = new ArrayList<Parameter>();
-		
-		public static class Parameter {
-			public static final String PREFIX_FOR_PARAMETER = "\\?";
-			public static final String SUFFIX_FOR_PARAMETER = "\\&";
-			
-			public String name;
-			public String value;
-			
-			public Parameter(String name, String value) {
-				this.name = name;
-				this.value = value;
-			}
-			
-		}
-	}
+	
 	
 }
-
 
 
