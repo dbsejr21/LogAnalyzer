@@ -42,6 +42,7 @@ public class Preparer {
 	}
 
 	private void countAll() {
+		
 		for (Url url : InputLog.listUrl) {
 			countServiceId(url.serviceId);
 			countApiKey(url.parameters);
@@ -63,6 +64,7 @@ public class Preparer {
 	}
 
 	private void count(Map<String, Integer> map, String key) {
+		
 		if (map.containsKey(key)) {
 			int count = map.get(key) + 1;
 			map.put(key, count);
@@ -72,7 +74,9 @@ public class Preparer {
 	}
 
 	private void countApiKey(List<Parameter> parameters) {
+		
 		for (Parameter parameter : parameters) {
+			
 			if (parameter.name.equals("apikey")) {
 				String apikey = parameter.value;
 				count(Stat.counterForApiKey, apikey);

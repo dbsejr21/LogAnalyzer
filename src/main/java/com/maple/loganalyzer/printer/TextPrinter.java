@@ -31,18 +31,18 @@ public class TextPrinter {
 	
 	public void printAll() throws IOException {
 		
-		printMostCalledApikey();
-		printNumberOfcallStatusCode();
-		printTopThreeServiceId();
-		printPeakTime();
-		printUseRatioBrower();
+		makeMostCalledApikey();
+		makeNumberOfcallStatusCode();
+		makeTopThreeServiceId();
+		makePeakTime();
+		makeUseRatioBrower();
 		
 		bufferdWriter.write(stringBuffer.toString());
 		bufferdWriter.flush();
 		fileWriter.close();
 	}
 	
-	private void printMostCalledApikey() {
+	private void makeMostCalledApikey() {
 		String mostCalledApikey = OutputLog.mostCalledApikey;
 		stringBuffer.append("최다호출 APIKEY\n");
 		stringBuffer.append(mostCalledApikey + "\n");
@@ -50,7 +50,7 @@ public class TextPrinter {
 		
 	}
 	
-	private void printNumberOfcallStatusCode() {
+	private void makeNumberOfcallStatusCode() {
 		stringBuffer.append("상태코드 별 횟수\n");
 		for (String numberOfcallStatusCode: OutputLog .numberOfCallStatusCode) {
 			stringBuffer.append(numberOfcallStatusCode + "\n");
@@ -58,7 +58,7 @@ public class TextPrinter {
 		stringBuffer.append("\n");
 	}
 	
-	private void printTopThreeServiceId() {
+	private void makeTopThreeServiceId() {
 		stringBuffer.append("상위 3개의 API ServiceID와 각각의 요청 수\n");
 		for (String topThreeServiceId: OutputLog.topThreeServiceId) {
 			stringBuffer.append(topThreeServiceId + "\n");
@@ -66,14 +66,14 @@ public class TextPrinter {
 		stringBuffer.append("\n");
 	}
 	
-	private void printPeakTime() {
+	private void makePeakTime() {
 		String peakTime = OutputLog.peakTime;
 		stringBuffer.append("피크 시간대\n");
 		stringBuffer.append(peakTime + "\n");
 		stringBuffer.append("\n");
 	}
 	
-	private void printUseRatioBrower() {
+	private void makeUseRatioBrower() {
 		stringBuffer.append("웹 브라우저 별 사용비율\n");
 		for (String useRatioBrower: OutputLog.useRatioBrower) {
 			stringBuffer.append(useRatioBrower + "\n");

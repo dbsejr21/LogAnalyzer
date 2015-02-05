@@ -42,6 +42,7 @@ public class LogParser {
 
 		for (int i = 0; i < UNIT_OF_PARSE_LINE; i++) {
 			line = randomAccessFile.readLine();
+			
 			if (line != null) {
 				listCompenent = compenentParser.parseCompenent(line);
 				addCompenentToList();
